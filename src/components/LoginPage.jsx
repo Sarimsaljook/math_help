@@ -7,7 +7,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="app">
+    <div className="login-app">
       <div className="login-form">
         <div className="title">Welcome Back!</div> 
 

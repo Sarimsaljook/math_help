@@ -1,4 +1,4 @@
-.app {
+.login-app {
   font-family: sans-serif;
   display: flex;
   align-items: center;
@@ -7,7 +7,7 @@
   gap: 20px;
   height: 100vh;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  background-color: #f8f9fd;
+  background: linear-gradient(to bottom, #db3f34, #ffffff); /* Blue to white gradient */
 }
 
 input[type="text"],
