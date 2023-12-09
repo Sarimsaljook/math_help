@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './../styles/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginPage = () => {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
+
+  const loginUser = () =>  {
+    signInWithEmailAndPassword(auth, email, password)
+  .then(() => {
+    navigate('/home');
+    alert("WELCOME BACK!");
+  })
+  .catch((err) => {
+    alert(err);
+    console.log(err);
+  });
+  }
 
   return (
     <div className="login-app">
@@ -22,16 +39,16 @@ const LoginPage = () => {
           alt="Math Help Logo"      
         />
 
-    <div className="form" style={{ marginTop: 40}}>
+    <div className="form" style={{ marginTop: 40}} onSubmit={loginUser}>
      <form>
        <div className="input-container">
-         <label>Username: </label>
-         <input type="text" name="uname" required />
+         <label>Email: </label>
+         <input type="email" name="uname" required value={email} onChange={(e) => setEmail(e.target.value)}/>
         
        </div>
        <div className="input-container">
          <label>Password: </label>
-         <input type="password" name="pass" required />
+         <input type="password" name="pass" required  value={password} onChange={(e) => setPassword(e.target.value)}/>
        </div>
 
        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 25 }}>
@@ -41,7 +58,7 @@ const LoginPage = () => {
        </div>
 
        <div className="button-container">
-         <button className='login-button'>Login</button>
+         <button className='login-button' type='submit'>Login</button>
        </div>
       </form>
 
