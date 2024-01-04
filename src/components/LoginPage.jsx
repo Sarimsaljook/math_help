@@ -11,11 +11,15 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const loginUser = () =>  {
+  const loginUser = (e) =>  {
+
+    e.preventDefault();
+
     signInWithEmailAndPassword(auth, email, password)
   .then(() => {
-    navigate('/home');
+    console.log('hi');
     alert("WELCOME BACK!");
+    navigate('/home');
   })
   .catch((err) => {
     alert(err);
@@ -39,16 +43,16 @@ const LoginPage = () => {
           alt="Math Help Logo"      
         />
 
-    <div className="form" style={{ marginTop: 40}} onSubmit={loginUser}>
+    <div className="form" style={{ marginTop: 40}}>
      <form>
        <div className="input-container">
          <label>Email: </label>
-         <input type="email" name="uname" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
         
        </div>
        <div className="input-container">
          <label>Password: </label>
-         <input type="password" name="pass" required  value={password} onChange={(e) => setPassword(e.target.value)}/>
+         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
        </div>
 
        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 25 }}>
@@ -58,7 +62,7 @@ const LoginPage = () => {
        </div>
 
        <div className="button-container">
-         <button className='login-button' type='submit'>Login</button>
+         <button className='login-button' onClick={(e) => loginUser(e)}>Login</button>
        </div>
       </form>
 

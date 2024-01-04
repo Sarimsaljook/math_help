@@ -10,10 +10,11 @@
   background: linear-gradient(to bottom, #db3f34, #ffffff); /* Blue to white gradient */
 }
 
-input[type="text"],
+input[type="email"],
 input[type="password"] {
-  height: 25px;
+  height: 27.5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3mm;
 }
 
 .login-button {
